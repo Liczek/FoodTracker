@@ -39,6 +39,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         mealNameLabel.text = textField.text
     }
     
+    //MARK: UIIMah\geControllerDelegate
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        
+        // Dismiss the picker if the user canceled
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        // The info dictionary contains multiple representations of image, and this uses the original
+        
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Set photoImageView to displey the selected image.
+        
+        photoImageView.image = selectedImage
+        
+        // Dismiss the picker.
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
 
     //MARK: Actions
     
@@ -52,7 +76,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePickerController.sourceType = /*UIImagePickerControllerSourceType*/.PhotoLibrary
         
         
         // Make sure ViewController is notified when the user picks an image.
