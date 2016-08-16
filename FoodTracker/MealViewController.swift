@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
 
@@ -23,6 +24,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         //Handle the text field's user input through delegate callbacks.
         
         nameTextField.delegate = self
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meal Name", attributes: [NSForegroundColorAttributeName : UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.25)])
+        nameTextField.clearButtonMode = UITextFieldViewMode.Always
+        
+        photoImageView.layer.cornerRadius = 15
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        photoImageView.layer.masksToBounds = true
+        photoImageView.layer.cornerRadius = 15
+        
     }
     
     //MARK: UITextFieldDelegate
@@ -36,10 +47,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        mealNameLabel.text = textField.text
+        
     }
     
-    //MARK: UIIMah\geControllerDelegate
+    //MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         
@@ -86,11 +97,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
     }
     
-    
-    @IBAction func setDefaultLabelText(sender: UIButton) {
-        mealNameLabel.text = "Default Text"
-    }
-    
+        
     
 
 }
