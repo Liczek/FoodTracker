@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     //MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         // Hide the keyboard.
         
@@ -35,14 +35,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         mealNameLabel.text = textField.text
     }
     
 
     //MARK: Actions
     
-    @IBAction func selectImageFromPhotoLibrary(sender: UITapGestureRecognizer) {
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         
         // Hide the keyboard - This code ensures that if the user taps the image view while typing in the text field, the keyboard is dismissed properly.
         
@@ -52,18 +52,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         
         // Make sure ViewController is notified when the user picks an image.
         
         imagePickerController.delegate = self
-        presentViewController(imagePickerController, animated: true, completion: nil)
+        present(imagePickerController, animated: true, completion: nil)
         
     }
     
     
-    @IBAction func setDefaultLabelText(sender: UIButton) {
+    @IBAction func setDefaultLabelText(_ sender: UIButton) {
         mealNameLabel.text = "Default Text"
     }
     
